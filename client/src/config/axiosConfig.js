@@ -10,6 +10,6 @@ export const BACKEND_URL = "wss://e-mart-1.onrender.com"; // Production WebSocke
 
 // Set global defaults for Axios
 axios.defaults.baseURL = BASE_URL;
-// axios.defaults.withCredentials = true; // Enable sending cookies with requests
+axios.defaults.withCredentials = true; 
 
 export default axios;

@@ -55,7 +55,10 @@ app.use(
 
 // Midlewares
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: "https://e-mart-1.vercel.app", // Must match exactly
+  credentials: true, // Allow cookies/session
+}));
 app.use(express.json());
 app.use(morgan("dev"));
 
@@ -107,11 +110,11 @@ const server = http.createServer(app);
 
 
 const io = new Server(server, {
-  pingTimeout: 60000, // Set ping timeout for connections
+  pingTimeout: 60000,
   cors: {
-   // origin: "https://e-mart-1.onrender.com", // Your frontend URL
-    origin: "*",
-    methods: ["GET", "POST"], 
+    origin: "https://e-mart-1.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
