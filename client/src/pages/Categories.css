@@ -1,0 +1,12 @@
+.card{
+          background-color:lightblue  !important;
+          transition: all 0.6s ease;
+}
+
+.container{
+          
+}
+
+.card:hover{
+          transform: scaleZ(1.5);
+}

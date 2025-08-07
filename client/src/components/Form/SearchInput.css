@@ -1,0 +1,39 @@
+.search-input {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+         /* Set a maximum width for a balanced layout */
+        /* Center the input on the page */
+          border-radius: 25px;
+          overflow: hidden; /* To keep the search button attached */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          
+        }
+        
+        .search-side {
+          width: 100%;
+          padding: 10px 15px;
+          border: 1px solid #ccc; /* Subtle border */
+          border-right: none; /* Remove border on the side attached to the button */
+          outline: none;
+          border-radius: 25px 0 0 25px; /* Rounded left side */
+          font-size: 16px;
+        }
+        
+        .search-button {
+          background-color: #004080; /* Dark blue button */
+          color: white;
+          border: none;
+          border-radius: 0 25px 25px 0; /* Rounded right side */
+          padding: 15px 20px;
+          height: 100%;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        .search-button:hover {
+          background-color: #002c59; /* Darker blue on hover */
+        }
+        

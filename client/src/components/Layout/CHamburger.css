@@ -1,0 +1,213 @@
+/* .hamburger-icon {
+        display: flex;
+        justify-content: center;
+  
+        align-items: center;
+      width:40px;
+      height: 40px;
+          cursor: pointer;
+          transition: transform 0.5s ease;
+          background-color: purple;
+          border-radius: 50%;
+
+        } */
+        
+        .hamburger-icon span {
+          background-color:white;
+          height: 20px;
+          border-radius: 50%;
+          width: 20px;
+          z-index: 2000;
+        }
+/* Main container styling */
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevents overflow when the shadow expands */
+}
+
+/* Hamburger icon styling */
+.hamburger-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon.done {
+  transform: rotate(45deg); /* Optional rotation animation */
+}
+
+
+.radial-quarter-shadow {
+  position: fixed;
+  top: -300px;
+  left: -300px;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(7, 219, 231, 0.7) 0%, /* Bright purple with transparency */
+    rgba(2, 26, 78, 0.4) 70% /* Lighter purple with some transparency */
+  );
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%); /* Clips to the bottom-right quarter */
+  transition: all 0.5s ease; /* Smooth expansion animation */
+  z-index: 5;
+}
+
+
+.circ-line{
+  position: fixed;
+  top: -125px;
+  left: -125px;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  border: 2px solid  white;
+  transition: all 0.5s ease; /* Smooth expansion animation */
+  z-index: 6;
+}
+
+.circ-line.open{
+  width: 310px;
+  height: 310px;
+}
+
+.radial-quarter-shadow.open {
+  width: 600px; /* Fully expand to cover the viewport */
+  height: 600px; /* Fully expand to cover the viewport */
+}
+
+        
+        .menu-items.open{
+          height: 600px;
+          width: 600px;
+        } 
+
+        .menu-items {
+          position: fixed;
+          top: -300px;
+          left: -300px;
+          width: 0px;
+          height: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.5s ease-in-out;
+          overflow: hidden;
+          z-index: 8;
+        }
+        
+        .menu-items ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          transform: scale(0); /* Start collapsed */
+          transition: transform 0.5s ease-in-out;
+        }
+        
+        .menu-items.open ul {
+          transform: scale(1); /* Expand to full size */
+          z-index: 8;
+        }
+        
+        .menu-i li {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          background: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: transform 0.5s ease-in-out;
+          z-index: 8;
+        }
+        .menu-it  li{
+          position: absolute;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: transform 0.5s ease-in-out;
+          z-index: 8;
+        }
+        
+
+        .menu-it li:nth-child(1) {
+          transform: translate(0, 0); /* Start at the center */
+        }
+        
+        .menu-items.open .menu-it li:nth-child(1) {
+          transform: translate(220px, 80px) rotate(0deg); /* Position when clicked */
+        }
+        
+        .menu-it li:nth-child(2) {
+          transform: translate(0, 0);
+        }
+        
+        .menu-items.open .menu-it li:nth-child(2) {
+          transform: translate(100px, 220px);
+        }
+        
+        .menu-i li:nth-child(1) {
+          transform: translate(0, 0); /* Start at the center */
+        }
+        
+        .menu-items.open .menu-i li:nth-child(1) {
+          transform: translate(240px, 40px) rotate(0deg); /* Position when clicked */
+        }
+        
+        .menu-i li:nth-child(2) {
+          transform: translate(0, 0);
+        }
+        
+        .menu-items.open .menu-i li:nth-child(2) {
+          transform: translate(220px, 95px);
+        }
+        
+        .menu-i li:nth-child(3) {
+          transform: translate(0,0);
+        }
+        
+        .menu-items.open .menu-i li:nth-child(3) {
+          transform: translate(190px, 155px);
+        }
+        
+        .menu-i li:nth-child(4) {
+          transform: translate(0, 0);
+        }
+        
+        .menu-items.open .menu-i li:nth-child(4) {
+          transform: translate(140px, 195px);
+        }
+        
+        .menu-i li:nth-child(5) {
+          transform: translate(0, 0);
+        }
+        
+        .menu-items.open .menu-i li:nth-child(5) {
+          transform: translate(90px, 220px);
+        }
+        
+        .menu-items.open .menu-i li:nth-child(6) {
+          transform: translate(35px, 240px);
+        }
+        

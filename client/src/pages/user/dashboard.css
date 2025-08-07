@@ -1,0 +1,12 @@
+
+.design{
+          width: 100%;
+          border: 1px solid black;
+          border-radius:  12px;
+          display: flex;
+}
+
+.uk-image img{
+         height: 250px;
+         width: 250px;
+}
