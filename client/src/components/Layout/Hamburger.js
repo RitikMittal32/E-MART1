@@ -3,27 +3,27 @@ import {  Link } from "react-router-dom";
 import { Badge } from "antd";
 import './Header.css';
 import { FaRegUserCircle } from "react-icons/fa";
-import {
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/menu";
-import { getSender } from "../../config/ChatLogics";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { ChatState } from "../../context/ChatProvider";
+// import {
+//   Menu,
+//   MenuButton,
+//   MenuDivider,
+//   MenuItem,
+//   MenuList,
+// } from "@chakra-ui/menu";
+// import { getSender } from "../../config/ChatLogics";
+// import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+// import { ChatState } from "../../context/ChatProvider";
 
 const Hamburger = ({handleClick, handleLogout, auth, categories, cart, list}) => {
           // const list = useRef();
-          const {
-            setSelectedChat,
-            user,
-            notification,
-            setNotification,
-            chats,
-            setChats
-          } = ChatState();
+          // const {
+          //   setSelectedChat,
+          //   user,
+          //   notification,
+          //   setNotification,
+          //   chats,
+          //   setChats
+          // } = ChatState();
 
   return (
           <div className="fixed-top h" ref={list}>
@@ -75,7 +75,7 @@ const Hamburger = ({handleClick, handleLogout, auth, categories, cart, list}) =>
             </Link>
           </div>
           </li>
-          <li>
+          {/* <li>
             <Link 
               to={auth?.user?.role === 1 ? "/admin-chat" : "/user-chat"} 
               className="item bg-white rounded-full w-full"
@@ -84,7 +84,7 @@ const Hamburger = ({handleClick, handleLogout, auth, categories, cart, list}) =>
                 <img src="/Message.svg" alt="chat" />
               </div>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               onClick={handleLogout}
@@ -115,9 +115,9 @@ const Hamburger = ({handleClick, handleLogout, auth, categories, cart, list}) =>
                         </Link>
                   
                     </li>
-                    <li>
+                    {/* <li>
                     <Menu>
-            <MenuButton p={1}>
+             <MenuButton p={1}>
               <div className="item bg-white rounded-full w-full"><div className="w-10"><img src="/Notify.svg" alt="notify" /></div></div>
             </MenuButton>
             <MenuList pl={2}>
@@ -135,9 +135,9 @@ const Hamburger = ({handleClick, handleLogout, auth, categories, cart, list}) =>
                       : `New Message from ${getSender(user, notif.chat.users)}`}
                   </MenuItem>
                 ))}
-              </MenuList>
+              </MenuList> 
           </Menu>
-                    </li>
+                    </li> */}
                           
                     
                     </>

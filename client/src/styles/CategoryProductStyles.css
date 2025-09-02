@@ -1,21 +1,21 @@
-.category {
-  flex-wrap: wrap;
-  /* margin-top: 180px !important; */
-}
+
 .category .card {
-  background-color: rgba(128, 128, 128, 0.097);
-  width: 18rem;
+  width: 18rem; /* fixed width */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1); /* thin black border */
+  border-radius: 0.5rem; /* optional: smooth corners */
+  /* background-color: yellow; */
 }
+
+
 .category .card-name-price {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.category .card-price {
-  color: green;
-  font-weight: bold;
-}
+
 .category button {
   border-radius: 0;
   width: 100%;
@@ -29,10 +29,8 @@
   color: rgb(90, 89, 89);
 }
 
-.category .card img:hover {
-  transform: scale(0.9);
-}
 
-.category .card-img-top {
+
+/* .category .card-img-top {
   height: 300px !important;
-}
+} */

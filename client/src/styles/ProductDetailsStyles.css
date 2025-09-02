@@ -20,8 +20,9 @@
 }
 
 .similar-products .card {
-  background-color: rgba(128, 128, 128, 0.097);
   width: 18rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 .similar-products .card-name-price {
@@ -47,9 +48,7 @@
   color: rgb(90, 89, 89);
 }
 
-.similar-products .card img:hover {
-  transform: scale(0.9);
-}
+
 
 /* .card-img-top {
   width: 200px;
@@ -59,6 +58,3 @@
  width: 200px;
 }
 
-@media (max-width: 700px){
-
-}

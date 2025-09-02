@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Badge } from "antd";
 import "./CHamburger.css";
-import {
-          Menu,
-          MenuButton,
-          MenuDivider,
-          MenuItem,
-          MenuList,
-        } from "@chakra-ui/menu";
- import { getSender } from "../../config/ChatLogics";
- import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { ChatState } from "../../context/ChatProvider";
+// import {
+//           Menu,
+//           MenuButton,
+//           MenuDivider,
+//           MenuItem,
+//           MenuList,
+//         } from "@chakra-ui/menu";
+//  import { getSender } from "../../config/ChatLogics";
+//  import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+// import { ChatState } from "../../context/ChatProvider";
 const CHamburger = ({ handleClick, handleLogout, auth, categories, cart }) => {
   const [isOpen, setIsOpen] = useState(false); // Change to handle click instead of hover
-  const {
-    setSelectedChat,
-    user,
-    notification,
-    setNotification,
-    chats,
-    setChats
-  } = ChatState();
+  // const {
+  //   setSelectedChat,
+  //   user,
+  //   notification,
+  //   setNotification,
+  //   chats,
+  //   setChats
+  // } = ChatState();
   const toggleMenu = () => setIsOpen(!isOpen); // Toggle the menu on click
 
   return (
@@ -109,7 +109,7 @@ const CHamburger = ({ handleClick, handleLogout, auth, categories, cart }) => {
             </Link>
           </div>
           </li>
-          <li className="menu-item" >
+          {/* <li className="menu-item" >
             <Link 
               to={auth?.user?.role === 1 ? "/chat/admin-chat" : "/chat/user-chat"} 
               className="item  rounded-full w-full"
@@ -118,8 +118,8 @@ const CHamburger = ({ handleClick, handleLogout, auth, categories, cart }) => {
                 <img src="/Message.svg" alt="chat" />
               </div>
             </Link>
-          </li>
-          <li className="menu-item" >
+          </li> */}
+          {/* <li className="menu-item" >
                     <Menu>
             <MenuButton p={1}>
               <div className="item rounded-full w-full"><div className="w-10"><img src="/Notify.svg" alt="notify" /></div></div>
@@ -141,7 +141,7 @@ const CHamburger = ({ handleClick, handleLogout, auth, categories, cart }) => {
                 ))}
               </MenuList>
           </Menu>
-                    </li>
+                    </li> */}
           <li className="menu-item" >
             <Link
               onClick={handleLogout}

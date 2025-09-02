@@ -51,7 +51,7 @@ const ProductDetails = () => {
   return (
     <Layout>
       <div className="container-fluid p-0 sm:mt-[135px]">
-        <div className="row product-details">
+        <div className="row product-details mb-4">
           <div className="col-md-6 primage">
             <img
               src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${product._id}`}
@@ -60,7 +60,7 @@ const ProductDetails = () => {
             />
           </div>
           <div className="col-md-6 product-details-info">
-            <h1 className="text-center">Product Details</h1>
+            <h1 className="text-center text-2xl">Product Details</h1>
             <hr />
             <h6>Name : {product.name}</h6>
             <h6>Description : {product.description}</h6>
@@ -96,9 +96,9 @@ const ProductDetails = () => {
 
           </div>
         </div>
-        <hr />
-        <div className="row similar-products">
-          <h4>Similar Products ➡️</h4>
+  
+        <div className="row similar-products mt-10 mx-10 m-auto">
+          <h1 className="text-2xl">Similar Products ➡️</h1>
           {relatedProducts.length < 1 && (
             <p className="text-center">No Similar Products found</p>
           )}
@@ -113,7 +113,7 @@ const ProductDetails = () => {
                 <div className="card-body">
                   <div className="card-name-price">
                     <h5 className="card-title">{p.name}</h5>
-                    <h5 className="card-title card-price">
+                    <h5 className="text-blue-600 font-bold">
                       {p.price.toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
@@ -123,9 +123,8 @@ const ProductDetails = () => {
                   <p className="card-text ">
                     {p.description.substring(0, 60)}...
                   </p>
-                  <div className="card-name-price">
+                  <div className="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 transition">
                     <button
-                      className="btn btn-info ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
@@ -136,8 +135,8 @@ const ProductDetails = () => {
             ))}
           </div>
         </div>
-        <div className="review-section"> 
-          <h1>Review Section</h1>
+        <div className="review-section m-auto mx-2"> 
+          {/* <h1 className="mx-5 text-2xl">Review Section</h1> */}
           <div>
             {loading ? (
               <p>Loading reviews...</p>

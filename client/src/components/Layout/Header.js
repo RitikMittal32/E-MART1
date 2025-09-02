@@ -7,16 +7,16 @@ import { useCart } from "../../context/cart";
 import { Badge } from "antd";
 import './Header.css';
 import { useEffect,useState } from "react";
-import { getSender } from "../../config/ChatLogics";
-import { ChatState } from "../../context/ChatProvider";
+// import { getSender } from "../../config/ChatLogics";
+// import { ChatState } from "../../context/ChatProvider";
 import axios from '../../config/axiosConfig.js';
-import CHamburger from "./CHamburger";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/menu";
+import CHamburger from "./CHamburger.js";
+// import {
+//   Menu,
+//   MenuButton,
+//   MenuItem,
+//   MenuList,
+// } from "@chakra-ui/menu";
 
 
 const Header = () => {
@@ -24,12 +24,12 @@ const Header = () => {
   const [cart] = useCart();
   const categories = useCategory();
   const [check,setCheck] = useState(true);
-  const {
-    setSelectedChat,
-    user,
-    notification,
-    setNotification,
-  } = ChatState();
+  // const {
+  //   setSelectedChat,
+  //   user,
+  //   notification,
+  //   setNotification,
+  // } = ChatState();
 
 
   useEffect(() => {
@@ -41,8 +41,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get("/api/v1/auth/logOut", { withCredentials: true });
-      // console.log(response.data.message); 
-      // Redirect or update the state as needed
+
       setAuth({
         ...auth,
         user: null,
@@ -135,7 +134,7 @@ const Header = () => {
 
                       </Link>
                     </li>
-                    <li> 
+                    {/* <li> 
                       <Link 
                   to={auth?.user?.role === 1 ? "/chat/admin-chat" : "/chat/user-chat"} 
                   className="bg-white rounded-full w-full" 
@@ -145,15 +144,15 @@ const Header = () => {
                   <div className="w-10 p-1"><img src="/Message.svg" alt="cart" /></div>
                
                   </Link>
-                    </li>
+                    </li> */}
                   
 
-                    <li>
+                    {/* <li>
                     <Menu>
             <MenuButton p={1}>
               <div className="bg-white rounded-full w-10 text-black"><img src="/Notify.svg" alt="notify" /></div>
             </MenuButton>
-            <MenuList pl={2}>
+             <MenuList pl={2}>
                 {!notification.length && "No New Messages"}
                 {notification.map((notif) => (
                   <MenuItem
@@ -168,9 +167,9 @@ const Header = () => {
                       : `New Message from ${getSender(user, notif.chat.users)}`}
                   </MenuItem>
                 ))}
-              </MenuList>
+              </MenuList> 
           </Menu>
-                    </li>
+                    </li> */}
                     <li>
                         <Link
                           onClick={handleLogout}

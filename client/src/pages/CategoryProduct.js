@@ -27,72 +27,59 @@ const CategoryProduct = () => {
 
   return (
     <Layout>
-      <div className="category" style={{marginTop: "180px"}}>
+      <div className="category mb-10" style={{marginTop: "180px"}}>
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{products?.length} result found </h6>
-        <div className="row">
-          <div className="col-md-9 ">
-            <div className="d-flex flex-wrap">
-              {products?.map((p) => (
-                <div className="" key={p._id}>
-                  <img
-                    src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-                    className=""
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <div className="card-name-price">
-                      <h5 className="card-title">{p.name}</h5>
-                      <h5 className="card-title card-price">
-                        {p.price.toLocaleString("en-IN", {
-                          style: "currency",
-                          currency: "INR",
-                        })}
-                      </h5>
-                    </div>
-                    <p className="card-text ">
-                      {p.description.substring(0, 60)}...
-                    </p>
-                    <div className="card-name-price">
-                      <button
-                        className="btn btn-info ms-1"
-                        onClick={() => navigate(`/product/${p.slug}`)}
-                      >
-                        More Details
-                      </button>
-                      {/* <button
-                    className="btn btn-dark ms-1"
-                    onClick={() => {
-                      setCart([...cart, p]);
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, p])
-                      );
-                      toast.success("Item Added to cart");
-                    }}
-                  >
-                    ADD TO CART
-                  </button> */}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* <div className="m-2 p-3">
-            {products && products.length < total && (
-              <button
-                className="btn btn-warning"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? "Loading ..." : "Loadmore"}
-              </button>
-            )}
-          </div> */}
+        <div className="w-full px-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {products?.map((p) => (
+      <div
+        className="card bg-white border border-gray-200 rounded-lg shadow-lg p-4"
+        key={p._id}
+      >
+        <img
+          src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
+          className="w-full h-48 object-cover rounded-md"
+          alt={p.name}
+        />
+        <div className="card-body mt-3">
+          <div className="flex justify-between items-center mb-2">
+            <h5 className="text-lg font-semibold">{p.name}</h5>
+            <h5 className="text-blue-600 font-bold">
+              {p.price.toLocaleString("en-IN", {
+                style: "currency",
+                currency: "INR",
+              })}
+            </h5>
+          </div>
+          <p className="text-sm text-gray-600 mb-3">
+            {p.description.substring(0, 60)}...
+          </p>
+          <div className="flex justify-between items-center">
+            <button
+              className="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 transition"
+              onClick={() => navigate(`/product/${p.slug}`)}
+            >
+              More Details
+            </button>
+            {/* Uncomment for add-to-cart */}
+            {/* <button
+              className="bg-gray-800 text-white py-1 px-3 rounded-md hover:bg-gray-900 transition"
+              onClick={() => {
+                setCart([...cart, p]);
+                localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                toast.success("Item Added to cart");
+              }}
+            >
+              Add to Cart
+            </button> */}
           </div>
         </div>
+      </div>
+    ))}
+  </div>
+</div>
+
       </div>
     </Layout>
   );

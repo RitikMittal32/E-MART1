@@ -152,11 +152,11 @@
         
 
         .menu-it li:nth-child(1) {
-          transform: translate(0, 0); /* Start at the center */
+          transform: translate(0, 0); 
         }
         
         .menu-items.open .menu-it li:nth-child(1) {
-          transform: translate(220px, 80px) rotate(0deg); /* Position when clicked */
+          transform: translate(220px, 80px) rotate(0deg); 
         }
         
         .menu-it li:nth-child(2) {
@@ -168,11 +168,11 @@
         }
         
         .menu-i li:nth-child(1) {
-          transform: translate(0, 0); /* Start at the center */
+          transform: translate(0, 0); 
         }
         
         .menu-items.open .menu-i li:nth-child(1) {
-          transform: translate(240px, 40px) rotate(0deg); /* Position when clicked */
+          transform: translate(240px, 40px) rotate(0deg); 
         }
         
         .menu-i li:nth-child(2) {
@@ -199,15 +199,15 @@
           transform: translate(140px, 195px);
         }
         
-        .menu-i li:nth-child(5) {
+        /* .menu-i li:nth-child(5) {
           transform: translate(0, 0);
         }
         
         .menu-items.open .menu-i li:nth-child(5) {
           transform: translate(90px, 220px);
         }
-        
-        .menu-items.open .menu-i li:nth-child(6) {
+         */
+        /* .menu-items.open .menu-i li:nth-child(6) {
           transform: translate(35px, 240px);
-        }
+        }  */
         
