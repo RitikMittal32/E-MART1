@@ -22,7 +22,6 @@ const AdminDashboard = () => {
               <h4> Email : {auth?.user?.email}</h4>
               <h4> Contact : +91 {auth?.user?.phone}</h4>
               <h4> Nationality : INDIAN</h4>
-              {/* <h1>BJP JINDABAD</h1> */}
               </div>
             </div>
           </div>

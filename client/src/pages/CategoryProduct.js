@@ -62,17 +62,6 @@ const CategoryProduct = () => {
             >
               More Details
             </button>
-            {/* Uncomment for add-to-cart */}
-            {/* <button
-              className="bg-gray-800 text-white py-1 px-3 rounded-md hover:bg-gray-900 transition"
-              onClick={() => {
-                setCart([...cart, p]);
-                localStorage.setItem("cart", JSON.stringify([...cart, p]));
-                toast.success("Item Added to cart");
-              }}
-            >
-              Add to Cart
-            </button> */}
           </div>
         </div>
       </div>

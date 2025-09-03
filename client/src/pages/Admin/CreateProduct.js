@@ -18,7 +18,6 @@ const CreateProduct = () => {
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
 
-  //get all category
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -35,7 +34,6 @@ const CreateProduct = () => {
     getAllCategory();
   }, []);
 
-  //create product function
   const handleCreate = async (e) => {
     e.preventDefault();
     try {

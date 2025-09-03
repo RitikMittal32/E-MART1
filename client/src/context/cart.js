@@ -16,7 +16,7 @@ const CartProvider = ({ children }) => {
   );
 };
 
-// custom hook
+
 const useCart = () => useContext(CartContext);
 
 export { useCart, CartProvider };

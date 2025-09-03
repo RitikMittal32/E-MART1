@@ -32,10 +32,10 @@ dotenv.config();
 // Database config
 connectDB();
 
-// Rest object
+
 const app = express();
 
-// Session management
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "Key that will Sign cookie",

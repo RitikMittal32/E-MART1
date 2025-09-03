@@ -24,8 +24,7 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
-// import UserChatpage from "./pages/UserChatpage";
-// import AdminChatpage from "./pages/AdminChatPage";
+
 function App() {
   return (
     <>
@@ -57,10 +56,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
-        {/* <Route path="/chat" element={<PrivateRoute />} >
-          <Route path="user-chat" element={<UserChatpage/>} />
-          <Route path="admin-chat" element={<AdminChatpage/>} />
-        </Route> */}
       </Routes>
     </>
   );

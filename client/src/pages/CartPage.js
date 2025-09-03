@@ -17,7 +17,7 @@ const CartPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //total price
+
   const totalPrice = () => {
     try {
       let total = 0;

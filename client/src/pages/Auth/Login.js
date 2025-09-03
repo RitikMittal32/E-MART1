@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,11 +25,10 @@ const Login = () => {
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
 
-        // Fetch token and user info
         const tokenResponse = await axios.get("/api/v1/auth/protected-route", { withCredentials: true });
-        const token = tokenResponse.data.token; // Assuming the token is returned in the response
+        const token = tokenResponse.data.token; 
         const profileResponse = await axios.get("/api/v1/auth/profile", { withCredentials: true });
-        const user = profileResponse.data.user; // Assuming the user info is returned in the response
+        const user = profileResponse.data.user; 
         if (token && user) {
           setAuth({
             token: token,
@@ -40,7 +38,7 @@ const Login = () => {
           console.log(user);
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           toast.success("User data fetched successfully!");
-          navigate(location.state || "/"); // Navigate to the previous page or home
+          navigate(location.state || "/");
         }
 
       } else {

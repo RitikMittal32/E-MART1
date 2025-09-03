@@ -6,7 +6,7 @@ import axios from "../../config/axiosConfig";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
 import '../../App.css';
-// import 'antd/dist/antd.css';
+
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -28,11 +28,10 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      // toast.error("somthing went wrong in input form");
     }
   };
 
-  //get all cat
+
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -49,7 +48,7 @@ const CreateCategory = () => {
     getAllCategory();
   }, []);
 
-  //update category
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -70,7 +69,7 @@ const CreateCategory = () => {
       console.log(error);
     }
   };
-  //delete category
+
   const handleDelete = async (pId) => {
     try {
       const { data } = await axios.delete(

@@ -27,10 +27,10 @@ export const HeroBanner = () => {
       <div className="hero-content">
         <h1>Shop the Latest Trends</h1>
         <p>Exclusive collections just for you!</p>
-        <div className="search"><SearchInput /></div>
+        <div><SearchInput /></div>
       </div>
     </div>
   );
 };
 
-// export default HeroBanner;
+

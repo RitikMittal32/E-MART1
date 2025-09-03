@@ -1,7 +1,3 @@
-/* .cart-page {
-  margin-top: 150px;
-} */
-
 .cart-page h1 {
   padding: 15px !important;
   font-family: "roboto", sans-serif;
@@ -30,7 +26,6 @@
 }
 .cart-page .cart-summary {
   text-align: center;
-  /* margin-top: -140px !important; */
 }
 
 .btn-danger{

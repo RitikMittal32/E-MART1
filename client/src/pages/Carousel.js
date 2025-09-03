@@ -1,26 +1,8 @@
-
 import "./Carousel.css";
 import { useState } from "react";
 import Slider from "react-slick";
 
-
-export const Carousel = ({Icons}) => {
-  // const NextArrow = ({ onClick }) => {
-  //   return (
-  //     <div className="arrow next" onClick={onClick}>
-  //       <FaArrowRight />
-  //     </div>
-  //   );
-  // };
-
-  // const PrevArrow = ({ onClick }) => {
-  //   return (
-  //     <div className="arrow prev" onClick={onClick}>
-  //       <FaArrowLeft />
-  //     </div>
-  //   );
-  // };
-
+const Carousel = ({ Icons }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const settings = {
@@ -31,39 +13,37 @@ export const Carousel = ({Icons}) => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: 0,
-    beforeChange: (current, next) => setImageIndex(next),
-    autoplay: true,  // Enable auto scroll
-    autoplaySpeed: 1000,  // Set delay to 2 seconds
-    pauseOnHover: false,  // Pause on hover
-    arrows: false,  // Disable next/prev arrows
+    beforeChange: (_, next) => setImageIndex(next),
+    autoplay: true,
+    autoplaySpeed: 1000,
+    pauseOnHover: false,
+    arrows: false,
     responsive: [
       {
-        breakpoint: 768,  // For mobile devices
-        settings: {
-          slidesToShow: 3,  // Show 3 slides on mobile
-        },
+        breakpoint: 768,
+        settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 1024,  // For tablet and below desktop
-        settings: {
-          slidesToShow: 5,  // Show 5 slides on larger screens
-        },
+        breakpoint: 1024,
+        settings: { slidesToShow: 5 },
       },
     ],
   };
-  
-
 
   return (
     <div>
       <Slider {...settings}>
         {Icons.map((img, idx) => (
-          <div key={idx} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
+          <div
+            key={idx}
+            className={idx === imageIndex ? "slide activeSlide" : "slide"}
+          >
             <img src={img.imgs} alt={img} />
           </div>
         ))}
       </Slider>
     </div>
   );
-}
+};
 
+export default Carousel; 

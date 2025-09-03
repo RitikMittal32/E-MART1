@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import './AdminMenu.css';
 
 const AdminMenu = () => {
   return (
@@ -32,12 +31,6 @@ const AdminMenu = () => {
           >
             Orders
           </NavLink>
-          {/* <NavLink
-            to="/dashboard/admin/users"
-            className="list-group-item list-group-item-action"
-          >
-            Users
-          </NavLink> */}
         </div>
       </div>
     </>

@@ -5,18 +5,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
 import ReviewComponent from "../components/Form/ReviewForm";
 import { useAuth } from "../context/auth";
-import { useCart } from "../context/cart"; // Import useCart
-import toast from "react-hot-toast"; // Import toast
+import { useCart } from "../context/cart";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const params = useParams();
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [loading, setLoading] = useState(false); 
-  const [productId, setProductId] = useState(); 
-  const [cart, setCart] = useCart(); // Destructure cart and setCart from useCart
+  const [loading, setLoading] = useState(false);
+  const [productId, setProductId] = useState();
+  const [cart, setCart] = useCart();
 
   useEffect(() => {
     if (params?.slug) getProduct();
@@ -62,41 +62,43 @@ const ProductDetails = () => {
           <div className="col-md-6 product-details-info">
             <h1 className="text-center text-2xl">Product Details</h1>
             <hr />
-            <h6>Name : {product.name}</h6>
-            <h6>Description : {product.description}</h6>
+            <h6>Name: {product.name}</h6>
+            <h6>Description: {product.description}</h6>
             <h6>
-              Price :
+              Price:{" "}
               {product?.price?.toLocaleString("en-IN", {
-                style: "currency",                  
+                style: "currency",
                 currency: "INR",
               })}
             </h6>
-            <h6>Category : {product?.category?.name}</h6>
+            <h6>Category: {product?.category?.name}</h6>
             <button
-  className="btn btn-dark ms-1"
-  onClick={() => {
-    const existingProductIndex = cart.findIndex((item) => item._id === product._id);
-    let updatedCart = [...cart];
-
-    if (existingProductIndex >= 0) {
-      // If the product is already in the cart, increase its quantity
-      updatedCart[existingProductIndex].quantity += 1;
-    } else {
-      // Otherwise, add the product with a quantity of 1
-      updatedCart.push({ ...product, quantity: 1 });
-    }
-
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    toast.success("Item Added to cart");
-  }}
->
-  ADD TO CART
-</button>
-
+              className={`btn btn-dark ms-1 ${auth.user ? "active" : ""}`}
+              disabled={!auth.user}
+              onClick={() => {
+                if (!auth) {
+                  toast.error("Please login to add items to cart");
+                  return;
+                }
+                const existingProductIndex = cart.findIndex(
+                  (item) => item._id === product._id
+                );
+                let updatedCart = [...cart];
+                if (existingProductIndex >= 0) {
+                  updatedCart[existingProductIndex].quantity += 1;
+                } else {
+                  updatedCart.push({ ...product, quantity: 1 });
+                }
+                setCart(updatedCart);
+                localStorage.setItem("cart", JSON.stringify(updatedCart));
+                toast.success("Item Added to cart");
+              }}
+            >
+              ADD TO CART
+            </button>
           </div>
         </div>
-  
+
         <div className="row similar-products mt-10 mx-10 m-auto">
           <h1 className="text-2xl">Similar Products ➡️</h1>
           {relatedProducts.length < 1 && (
@@ -120,13 +122,11 @@ const ProductDetails = () => {
                       })}
                     </h5>
                   </div>
-                  <p className="card-text ">
+                  <p className="card-text">
                     {p.description.substring(0, 60)}...
                   </p>
                   <div className="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 transition">
-                    <button
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
+                    <button onClick={() => navigate(`/product/${p.slug}`)}>
                       More Details
                     </button>
                   </div>
@@ -135,15 +135,13 @@ const ProductDetails = () => {
             ))}
           </div>
         </div>
-        <div className="review-section m-auto mx-2"> 
-          {/* <h1 className="mx-5 text-2xl">Review Section</h1> */}
-          <div>
-            {loading ? (
-              <p>Loading reviews...</p>
-            ) : (
-              <ReviewComponent productId={productId} product={product}/>
-            )}
-          </div>
+
+        <div className="review-section m-auto mx-2">
+          {loading ? (
+            <p>Loading reviews...</p>
+          ) : (
+            <ReviewComponent productId={productId} product={product} />
+          )}
         </div>
       </div>
     </Layout>

@@ -10,7 +10,6 @@ padding: 10px;
 
 }
 
-
 .ba{
   display: flex;
   
@@ -18,19 +17,6 @@ padding: 10px;
   gap: 20px;
   height: 450px;
 }
-
-/* .banner-imgs{
-  width:80%;
-  padding:20px; 
-}
-.banner-img{
-  height: 370px;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 12px;
-  transition: all 1s none;
-
-} */
 
 .banner-imgs {
   position: relative;
@@ -98,7 +84,7 @@ padding: 10px;
 }
 
 .icons {
-  flex: 0 0 auto; /* Prevent flex items from shrinking or growing */
+  flex: 0 0 auto; 
   width: 100px;
   height: 100px;
 }
@@ -207,7 +193,6 @@ padding: 10px;
 .products-details{
   width: 100%;
   padding: 10px;
-  /* margin-bottom: 10px; */
 }
 .products-details h1{
   font-size: larger;
@@ -234,17 +219,17 @@ padding: 10px;
 
 .home-page .main-card {
   background-color: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for 3D effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   padding: 20px;
-  display: flex; /* Align content side by side */
+  display: flex; 
   align-items: center;
-  perspective: 1000px; /* For 3D effect */
+  perspective: 1000px; 
   transition: transform 0.4s ease;
 }
 
 .home-page .main-card:hover {
-  transform: translateZ(20px) scale(1.02); /* Slight 3D lift on hover */
+  transform: translateZ(20px) scale(1.02); 
 }
 
 .home-page .card-img-top {
@@ -252,14 +237,14 @@ padding: 10px;
   width: 200px;
   object-fit: cover;
   border-radius: 10px;
-  margin-right: 20px; /* Add space between image and content */
+  margin-right: 20px;
 }
 
 .verticle-line {
   height: 100%;
   width: 2px;
   background-color: black;
-  margin: 0 20px; /* Space around vertical line */
+  margin: 0 20px; 
 }
 
 .cart-icons{
@@ -304,15 +289,6 @@ padding: 10px;
 .home-page .card-img-top {
   height: 250px !important;
 }
-/* ==================
-filters
-============== */
-/* .filters h4 {
-  margin-top: 100px;
-  color: black !important;
-  border-bottom: 1px solid black;
-} */
-
 .ant-checkbox-wrapper:first-of-type {
   margin-left: 8px;
 }
@@ -338,11 +314,6 @@ filters
   font-weight: bold;
   font-size: 20px !important;
 }
-
-
-/* .homepage{
-  margin-top: 170px;
-} */
 
 
 

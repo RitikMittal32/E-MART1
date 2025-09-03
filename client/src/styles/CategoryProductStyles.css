@@ -1,11 +1,10 @@
 
 .category .card {
-  width: 18rem; /* fixed width */
+  width: 18rem; 
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
               0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1); /* thin black border */
-  border-radius: 0.5rem; /* optional: smooth corners */
-  /* background-color: yellow; */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
 }
 
 
@@ -28,9 +27,3 @@
 .category .card-text {
   color: rgb(90, 89, 89);
 }
-
-
-
-/* .category .card-img-top {
-  height: 300px !important;
-} */

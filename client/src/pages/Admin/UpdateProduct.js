@@ -20,7 +20,6 @@ const UpdateProduct = () => {
   const [photo, setPhoto] = useState("");
   const [id, setId] = useState("");
 
-  //get single product
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
@@ -40,9 +39,9 @@ const UpdateProduct = () => {
   };
   useEffect(() => {
     getSingleProduct();
-    //eslint-disable-next-line
+
   }, []);
-  //get all category
+
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -59,7 +58,7 @@ const UpdateProduct = () => {
     getAllCategory();
   }, []);
 
-  //create product function
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -86,7 +85,7 @@ const UpdateProduct = () => {
     }
   };
 
-  //delete a product
+
   const handleDelete = async () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
@@ -103,7 +102,7 @@ const UpdateProduct = () => {
   };
   return (
     <Layout title={"Dashboard - Create Product"}>
-      <div className="container-fluid" style={{marginTop : "130px"}}>
+      <div className="container-fluid" style={{ marginTop: "130px" }}>
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />

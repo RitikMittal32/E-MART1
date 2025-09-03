@@ -12,7 +12,7 @@ const ForgotPasssword = () => {
 
   const navigate = useNavigate();
 
-  // form function
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
