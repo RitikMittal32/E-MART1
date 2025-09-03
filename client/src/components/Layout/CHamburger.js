@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Badge } from "antd";
 import "./CHamburger.css";
 
 const CHamburger = ({ handleClick, handleLogout, auth, cart }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <div ref={menuRef}>
       <div>
         <div
           className={`hamburger-icon ${isOpen ? "done" : ""}`}
@@ -20,24 +35,28 @@ const CHamburger = ({ handleClick, handleLogout, auth, cart }) => {
         <div className={`circ-line ${isOpen ? "open" : ""}`}>
           <span></span>
         </div>
-        <div
-          className={`radial-quarter-shadow ${isOpen ? "open" : ""}`}
-        ></div>
+        <div className={`radial-quarter-shadow ${isOpen ? "open" : ""}`}></div>
       </div>
 
       <div className={`menu-items ${isOpen ? "open" : ""}`}>
         {!auth?.user ? (
           <ul className="menu-it">
             <li className="items">
-              <Link to="/login" className="item rounded-full w-full">
-                <div className="w-20">
+              <Link
+                to="/login"
+                className="item rounded-full w-full bg-white p-2 "
+              >
+                <div className="w-10">
                   <img src="/Login1.svg" alt="login" />
                 </div>
               </Link>
             </li>
             <li className="items">
-              <Link to="/register" className="item rounded-full w-full">
-                <div className="w-20">
+              <Link
+                to="/register"
+                className="item rounded-full w-full bg-white p-2"
+              >
+                <div className="w-10">
                   <img src="/Register.png" alt="login" />
                 </div>
               </Link>
@@ -55,9 +74,7 @@ const CHamburger = ({ handleClick, handleLogout, auth, cart }) => {
 
             <li className="menu-item">
               <Link
-                to={`/dashboard/${
-                  auth?.user?.role === 1 ? "admin" : "user"
-                }`}
+                to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                 className="item flex"
               >
                 <div className="item rounded-full w-full mr-1">
