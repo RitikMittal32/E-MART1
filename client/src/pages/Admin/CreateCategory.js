@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
@@ -13,7 +13,7 @@ const CreateCategory = () => {
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
-  //handle Form
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,7 +30,6 @@ const CreateCategory = () => {
       console.log(error);
     }
   };
-
 
   const getAllCategory = async () => {
     try {
@@ -117,7 +116,7 @@ const CreateCategory = () => {
                         <td key={c._id}>{c.name}</td>
                         <td>
                           <button
-                            className="btn btn-primary ms-2"
+                            className="py-2 bg-blue-600 border-transparent rounded-lg px-4 text-white mx-1"
                             onClick={() => {
                               setVisible(true);
                               setUpdatedName(c.name);
@@ -127,7 +126,7 @@ const CreateCategory = () => {
                             Edit
                           </button>
                           <button
-                            className="btn btn-danger ms-2"
+                            className="py-2 bg-red-600 border-transparent rounded-lg px-4 text-white"
                             onClick={() => {
                               handleDelete(c._id);
                             }}

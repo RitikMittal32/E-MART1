@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../../config/axiosConfig.js";
 import { useAuth } from "../../context/auth.js";
 import { Box, Text, Button } from "@chakra-ui/react";
@@ -6,9 +6,7 @@ import toast from "react-hot-toast";
 
 const ReviewComponent = ({ productId , product }) => {
   const [reviews, setReviews] = useState([]);
-  const [rating, setRating] = useState(0);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
+  const [rating, setRating] = useState(0);;
   const [comment, setComment] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const [updateReviewId, setUpdateReviewId] = useState(null);
@@ -74,6 +72,7 @@ const ReviewComponent = ({ productId , product }) => {
        toast.success("Review Delete Successfully");
       fetchReviews(productId);
     } catch (error) {
+      toast.error("Not Authorized"); 
       console.error("Error deleting review:", error);
     }
   };
@@ -189,3 +188,4 @@ const ReviewComponent = ({ productId , product }) => {
 };
 
 export default ReviewComponent;
+

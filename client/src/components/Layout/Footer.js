@@ -15,7 +15,7 @@ const Footer = () => {
           </p>
           <nav className="categories">
             <p className="main">Categories</p>
-            <ul className="main-cat">
+            <ul className="flex gap-0 m-0">
               {categories?.map((c) => (
                 <li key={c.slug}>
                   <Link to={`/category/${c.slug}`}>{c.name}</Link>

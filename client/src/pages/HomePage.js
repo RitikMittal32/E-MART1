@@ -99,6 +99,7 @@ const HomePage = () => {
     }
     setChecked(all);
   };
+  
   useEffect(() => {
     if (!checked.length || !radio.length) getAllProducts();
   }, [checked.length, radio.length]);
@@ -173,7 +174,6 @@ const HomePage = () => {
               <div className="price-filter">
                 <h4 className="text-center mt-0">Price</h4>
                 <div>
-
                   <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                     <div className="prices">
                       {Prices?.map((p) => (
@@ -207,13 +207,12 @@ const HomePage = () => {
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       <div className="main-card d-flex">
-                        <div className="main-card-photo">
-                          <img
-                            src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-                            className="card-img-top"
-                            alt={p.name}
-                          />
-                        </div>
+
+                        <img
+                          src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
+                          className="h-48 object-contain w-48"
+                          alt={p.name}
+                        />
                         <div className="verticle-line"></div>
                         <div className="card-body">
                           <div className="card-name-price">
@@ -221,19 +220,20 @@ const HomePage = () => {
                           </div>
                           <div className="card-texts">
                             <p className="card-text ">
-                              {p.description.substring(0, 60)}...
+                              {p.description}
                             </p>
                           </div>
-                          <div className="card-name-prices  flex justify-evenly" style={{ width: "150px" }}>
-
+                          <div className="flex w-[200px] justify-between items-center">
+                            <div>
                             <h5 className="card-title card-price mr-4">
                               {p.price.toLocaleString("en-IN", {
                                 style: "currency",
                                 currency: "INR",
                               })}
                             </h5>
+                            </div>
+                            <div>
                             <button
-
                               disabled={!auth.user}
                               onClick={() => {
                                 if (!auth) {
@@ -241,21 +241,22 @@ const HomePage = () => {
                                   return;
                                 }
                                 const existingProductIndex = cart.findIndex(
-                                  (item) => item._id === products._id
+                                  (item) => item._id === p._id
                                 );
                                 let updatedCart = [...cart];
                                 if (existingProductIndex >= 0) {
                                   updatedCart[existingProductIndex].quantity += 1;
                                 } else {
-                                  updatedCart.push({ ...products, quantity: 1 });
+                                  updatedCart.push({ ...p, quantity: 1 });
                                 }
                                 setCart(updatedCart);
                                 localStorage.setItem("cart", JSON.stringify(updatedCart));
                                 toast.success("Item Added to cart");
                               }}
                             >
-                              <img className="cart-icons" src="./icons/cart.png" alt="cart" />
+                              <img className="flex w-20 h-20" src="./icons/cart.png" alt="cart" />
                             </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -276,10 +277,9 @@ const HomePage = () => {
                     {loading ? (
                       "Loading ..."
                     ) : (
-                      <>
-                        {" "}
+                      <div className="flex gap-2 items-center justify-center">
                         Loadmore <AiOutlineReload />
-                      </>
+                      </div>
                     )}
                   </button>
                 )}

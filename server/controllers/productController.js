@@ -16,6 +16,8 @@ var gateway = new braintree.BraintreeGateway({
   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 
+
+
 export const createProductController = async (req, res) => {
   try {
     const { name, description, price, category, quantity, shipping } =
@@ -336,6 +338,7 @@ export const braintreeTokenController = async (req, res) => {
         res.send(response);
       }
     });
+    console.log(gateway); 
   } catch (error) {
     console.log(error);
   }

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import UserMenu from "../../components/Layout/UserMenu";
-import Layout from "./../../components/Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import axios from "../../config/axiosConfig";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
+
   const getOrders = async () => {
     try {
       const { data } = await axios.get("/api/v1/auth/orders");
@@ -20,63 +21,96 @@ const Orders = () => {
   useEffect(() => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
+
   return (
-    <Layout title={"Your Orders"}>
-      <div className="container-fluid  dashboard" style={{marginTop : "130px"}}>
-        <div className="row">
-          <div className="col-md-3">
+    <Layout title="Your Orders">
+      <div className="container mx-auto mt-36 px-4 max-h-[80vh] overflow-y-auto pb-10">
+
+        <div className="grid grid-cols-12 gap-6">
+          {/* Sidebar */}
+          <div className="col-span-12 md:col-span-3">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <h1 className="text-center">All Orders</h1>
-            {orders?.map((o, i) => {
-              return (
-                <div className="border shadow">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Buyer</th>
-                        <th scope="col"> date</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Quantity</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{i + 1}</td>
-                        <td>{o?.status}</td>
-                        <td>{o?.buyer?.name}</td>
-                        <td>{moment(o?.createAt).fromNow()}</td>
-                        <td>{o?.payment.success ? "Success" : "Failed"}</td>
-                        <td>{o?.products?.length}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div className="container">
-                    {o?.products?.map((p, i) => (
-                      <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                        <div className="col-md-4">
+
+          <div className="col-span-12 md:col-span-9">
+            <h1 className="text-2xl font-bold text-center mb-6">
+              Your Orders
+            </h1>
+
+      
+            <div className="max-h-[70vh] overflow-y-auto pr-2 space-y-2">
+              {orders.map((o, i) => (
+                <div
+                  key={o._id}
+                  className="bg-white border border-gray-200 rounded-xl p-2 shadow-sm"
+                >
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="bg-gray-100 text-gray-700">
+                          <th className="py-2 px-4 text-left">#</th>
+                          <th className="py-2 px-4 text-left">Status</th>
+                          <th className="py-2 px-4 text-left">Buyer</th>
+                          <th className="py-2 px-4 text-left">Date</th>
+                          <th className="py-2 px-4 text-left">Payment</th>
+                          <th className="py-2 px-4 text-left">Qty</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="py-2 px-4">{i + 1}</td>
+                          <td className="py-2 px-4">{o.status}</td>
+                          <td className="py-2 px-4">{o.buyer?.name}</td>
+                          <td className="py-2 px-4">
+                            {moment(o.createdAt).fromNow()}
+                          </td>
+                          <td className="py-2 px-4 font-medium">
+                            {o.payment.success ? (
+                              <span className="text-green-600">Success</span>
+                            ) : (
+                              <span className="text-red-600">Failed</span>
+                            )}
+                          </td>
+                          <td className="py-2 px-4">{o.products.length}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+              
+                 <div className="overflow-x-auto mt-2">
+                    <div className="flex gap-4 w-max">
+                      {o.products.map((p) => (
+                        <div
+                          key={p._id}
+                          className="bg-gray-50 border rounded-lg p-4 flex gap-4 hover:bg-gray-100 transition"
+                        >
                           <img
                             src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-                            className="card-img-top"
                             alt={p.name}
-                            width="100px"
-                            height={"100px"}
+                            className="w-20 h-20 rounded-lg object-cover"
                           />
+
+                          <div>
+                            <p className="font-semibold text-gray-800">
+                              {p.name}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {p.description.substring(0, 40)}...
+                            </p>
+                            <p className="text-green-600 font-bold mt-1">
+                              ₹ {p.price}
+                            </p>
+                          </div>
                         </div>
-                        <div className="col-md-8">
-                          <p>{p.name}</p>
-                          <p>{p.description.substring(0, 30)}</p>
-                          <p>Price : {p.price}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+
+               </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </div>

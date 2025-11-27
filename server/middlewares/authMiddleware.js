@@ -2,21 +2,19 @@ import JWT from "jsonwebtoken";
 import userModel from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 
-//Protected Routes token base
 export const requireSignIn = async (req, res, next) => {
-  // console.log(req.headers.authorization);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ){
   try {
     const token = req.headers.authorization.split(" ")[1];
-    // console.log("Extracted Token:", token);
+
     const decode = JWT.verify(
       token,
       process.env.JWT_SECRET
     );
-    // console.log("Decoded Token:", decode);
+
     req.user = decode;
     next();
   } catch (error) {
@@ -28,7 +26,6 @@ export const requireSignIn = async (req, res, next) => {
 
 };
 
-//admin acceess
 export const isAdmin = async (req, res, next) => {
   try {
     const user = await userModel.findById(req.user._id);
@@ -60,13 +57,10 @@ export const protect = asyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
 
-      //decodes token id
       const decoded = JWT.verify(token, process.env.JWT_SECRET);
-      // console.log(decoded); 
+  
       req.user = await userModel.findById(decoded._id).select("-password");
-      // console.log("Authorization Header:", req.headers.authorization);
-      // console.log("Decoded User:", req.user);
-
+     
       next();
     } catch (error) {
       res.status(401);

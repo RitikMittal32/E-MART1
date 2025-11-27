@@ -55,7 +55,7 @@ const ProductDetails = () => {
           <div className="col-md-6 primage">
             <img
               src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${product._id}`}
-              className="card-img-top"
+              className="h-48 w-48 object-contain"
               alt={product.name}
             />
           </div>
@@ -109,7 +109,7 @@ const ProductDetails = () => {
               <div className="card m-2" key={p._id}>
                 <img
                   src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-                  className="card-img-top"
+                  className="h-48 object-contain flex justify-center items-center"
                   alt={p.name}
                 />
                 <div className="card-body">

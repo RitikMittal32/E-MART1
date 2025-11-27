@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
-import { AiFillWarning } from "react-icons/ai";
 import axios from "../config/axiosConfig";
 import toast from "react-hot-toast";
 import "../styles/CartStyles.css";
@@ -33,7 +32,6 @@ const CartPage = () => {
     }
   };
   
-  //detele item
   const removeCartItem = (pid) => {
     try {
       let myCart = [...cart];
@@ -104,8 +102,7 @@ const CartPage = () => {
   };
   return (
     <Layout>
-    {/* <div style={{display: "flex", justifyContent: "center" , alignItems : "center", height : "100vh"}}> */}
-      <div className=" cart-page container-fluid" style={{marginTop :"130px", marginBottom:"10px"}}>
+      <div className=" cart-page container-fluid" style={{marginTop: "100px", marginBottom:"10px"}}>
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
@@ -124,52 +121,73 @@ const CartPage = () => {
         </div>
         <div className="" >
   <div className="row">
-    <div className="col-md-7 m-0 p-0 overflow-x-hidden custom-scrollbar"
+    <div className="col-md-7 m-0 p-0 overflow-x-hidden"
             style={{
               height: "100vh",
               overflowY: "auto",
               display: "flex",  
               flexDirection: "column",
             }}>
-      {cart?.map((p) => (
-        <div className="row flex-row align-items-center my-3 border-4 border-gray-400 m-3 p-3 rounded-[12px]" key={p._id}>
-          <div className="col-md-4">
-            <img
-              src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-              className="card-img-top"
-              alt={p.name}
-            />
-          </div>
-          <div className="col-md-5">
-            <p>{p.name}</p>
-            <p>{p.description.substring(0, 30)}</p>
-            <p>Price: ₹{p.price}</p>
-            <div className="quantity-control">
-              <button
-                className="btn btn-outline-primary me-2"
-                onClick={() => decreaseQuantity(p._id)}
-              >
-                -
-              </button>
-              <span>Quantity: {p.quantity}</span>
-              <button
-                className="btn btn-outline-primary ms-2"
-                onClick={() => increaseQuantity(p._id)}
-              >
-                +
-              </button>
-            </div>
-            <div className="cart-remove-btn mt-2">
-              <button
-                className="btn btn-danger"
-                onClick={() => removeCartItem(p._id)}
-              >
-                Remove
-              </button>
-            </div>
+{cart?.length > 0 ? (
+  <>
+    {cart.map((p, idx) => (
+      <div
+        key={p._id || idx}
+        className="flex flex-col md:flex-row items-center md:items-start gap-6 bg-white border border-gray-200 shadow-sm rounded-xl p-2 my-1 hover:shadow-md transition mx-2"
+      >
+        <div className="w-32 h-32 flex items-center justify-center">
+          <img
+            src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
+            alt={p?.name || "Product image"}
+            className="w-full h-full object-contain rounded-lg"
+          />
+        </div>
+
+        <div className="flex-1 w-full">
+          <h2 className="text-lg font-semibold text-gray-800">
+            {p?.name || "Unnamed Product"}
+          </h2>
+          <p className="text-sm text-gray-600">
+            {p?.description
+              ? p.description.substring(0, 60) + "..."
+              : "No description available"}
+          </p>
+          <p className="mt-1 font-medium text-gray-700">₹{p?.price ?? 0}</p>
+
+          <div className="flex items-center gap-3">
+            <button
+              className="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
+              onClick={() => decreaseQuantity(p._id)}
+            >
+              −
+            </button>
+            <span className="px-4 py-1 rounded-lg bg-gray-100 text-gray-800">
+              {p?.quantity ?? 1}
+            </span>
+            <button
+              className="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
+              onClick={() => increaseQuantity(p._id)}
+            >
+              +
+            </button>
+            <button
+              className="text-red-600 hover:text-red-800 text-lg font-medium"
+              onClick={() => removeCartItem(p._id)}
+            >
+              🗑 Remove
+            </button>
           </div>
         </div>
-      ))}
+      </div>
+    ))}
+  </>
+) : (
+<>
+</>
+)}
+
+
+
 
 </div>
 

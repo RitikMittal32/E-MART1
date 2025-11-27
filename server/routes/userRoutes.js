@@ -4,7 +4,6 @@ import { protect, requireSignIn } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.get("/", allUsers);
-// router.get("/", protect, allUsers);
 router.get("/test", protect, testController);
 
 

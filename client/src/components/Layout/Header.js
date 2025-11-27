@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
@@ -134,7 +134,7 @@ const Header = () => {
                               <img src="/User.svg" alt="user" />
                             </div>
                           </div>
-                          <div className="uppercase navbar-brand text-gray-800">
+                          <div className="uppercase text-gray-800">
                             {auth?.user?.name}
                           </div>
                         </Link>

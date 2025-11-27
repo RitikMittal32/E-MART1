@@ -39,7 +39,7 @@ const CategoryProduct = () => {
       >
         <img
           src={`https://e-mart-1.onrender.com/api/v1/product/product-photo/${p._id}`}
-          className="w-full h-48 object-cover rounded-md"
+          className="h-48 object-contain flex justify-center items-center"
           alt={p.name}
         />
         <div className="card-body mt-3">

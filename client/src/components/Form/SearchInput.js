@@ -1,4 +1,3 @@
-import React from "react";
 import { useSearch } from "../../context/search";
 import axios from "../../config/axiosConfig";
 import { useNavigate } from "react-router-dom";

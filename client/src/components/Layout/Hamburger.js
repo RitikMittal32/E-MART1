@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Badge } from "antd";
 import "./Header.css";
-import { FaRegUserCircle } from "react-icons/fa";
 
 const Hamburger = ({ handleClick, handleLogout, auth, categories, cart, list }) => {
   return (

@@ -8,7 +8,6 @@ import { AuthProvider } from "./context/auth";
 import { SearchProvider } from "./context/search";
 import { CartProvider } from "./context/cart";
 import "antd/dist/reset.css";
-import {ChatProvider} from "./context/ChatProvider";
 import { ChakraProvider } from "@chakra-ui/react";
 
 
@@ -19,9 +18,7 @@ root.render(
       <SearchProvider>
         <CartProvider>
           <BrowserRouter>
-            <ChatProvider>
               <App />
-            </ChatProvider>
           </BrowserRouter>
         </CartProvider>
       </SearchProvider>
